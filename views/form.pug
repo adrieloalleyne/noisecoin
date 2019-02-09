@@ -1,0 +1,124 @@
+html
+html
+   head
+      title NoiseCoin
+      style block
+      link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous")
+      link(rel="stylesheet" href="/style.css")
+   body
+      input(id="current_account" type="hidden" value="")
+      div(id="overlay")
+         |
+      div(id="loader")
+         |
+      div
+          h1
+             | NoiseCoin Central Bank	  
+      form(action = "/", method = "POST")
+         div(style="margin-left:4em;margin-right:1em;font-size:22px;")
+            |Total Supply :  
+            span(id="supply_total" )
+               |
+         br
+         div
+            button(type = "button" ,id="mint" style="margin-left:4em;margin-right:1em;font-size:22px;") Mint NoiseCoins       
+            input(name = "mint_quantity" id="mint_quantity" value ="" style="font-size:22px;") 
+         br
+         div
+            button(type = "button", id="burn" style="margin-left:4em;margin-right:1em;font-size:22px;") Burn NoiseCoins  
+            input(name = "burn_quantity" value = "" id="burn_quantity" style="font-size:22px;") 
+         br
+         div(style="margin-left:4em;margin-right:1em;font-size:22px;")
+            |
+         div(class="dropdown" style="margin-left:4em;margin-right:1em;font-size:22px;")
+             button(type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" style="font-size:22px;")
+                 Dropdown Select Account
+             ul(class="dropdown-menu" id="account")
+         div(style="margin-left:4em;margin-right:1em;font-size:22px;" )
+             |Balance
+             span(style="margin-left:4em;margin-right:1em;font-size:22px;" id="account_balance")
+                 |
+         div(id="account")
+             |
+             button(type = "button" ,id="transfer" style="margin-left:4em;margin-right:1em;font-size:22px;") Add Coins 
+             input(name = "transfer_quantity" id="transfer_quantity" value ="" style="font-size:22px;") 				 
+         br  
+      div(class="modal fade" id="mintModal" role="dialog")
+         div(class="modal-dialog")
+            div(class="modal-content")
+               div(class="modal-header")
+               button(type="button" class="close" data-dismiss="modal")
+                  X
+               h4(class="modal-title")
+                  Mint NoiseCoin
+               div(class="modal-body")
+                  p
+                     |Are you sure you want to mint coins?
+               div(class="modal-footer")
+                  button(type="button" class="btn btn-default" data-dismiss="modal" id="mint_continue")
+                     |Continue
+                  button(type="button" class="btn btn-default" data-dismiss="modal")
+                     |Cancel
+      div(class="modal fade" id="transferModal" role="dialog")
+         div(class="modal-dialog")
+            div(class="modal-content")
+               div(class="modal-header")
+                  button(type="button" class="close" data-dismiss="modal")
+                     X
+               h4(class="modal-title")
+                  Tranfer Coins
+               div(class="modal-body")
+                  p(id="transfer_message")
+                     |Are you sure you want to transfer coins?
+               div(class="modal-footer")
+                  button(type="button" class="btn btn-default" data-dismiss="modal" id="transfer_continue")
+                     |Continue
+                  button(type="button" class="btn btn-default" data-dismiss="modal")
+                     |Cancel    				 					 
+      div(class="modal fade" id="burnModal" role="dialog")
+         div(class="modal-dialog")
+            div(class="modal-content")
+               div(class="modal-header")
+               button(type="button" class="close" data-dismiss="modal")
+                  X
+               h4(class="modal-title")
+                  Mint NoiseCoin
+               div(class="modal-body")
+                  p
+                     |Are you sure you want to burn coins?
+               div(class="modal-footer")
+                  button(type="button" class="btn btn-default" data-dismiss="modal" id="burn_continue")
+                     |Continue
+                  button(type="button" class="btn btn-default" data-dismiss="modal")
+                     |Cancel 
+					 
+      div(class="modal fade" id="successModal" role="dialog")
+         div(class="modal-dialog")
+            div(class="modal-content")
+               div(class="modal-header")
+               button(type="button" class="close" data-dismiss="modal")
+                  X
+               div(class="modal-body")
+                  p
+                     |Success!
+               div(class="modal-footer")
+                  button(type="button" class="btn btn-default" data-dismiss="modal")
+                     |Close
+
+      div(class="modal fade" id="failModal" role="dialog")
+         div(class="modal-dialog")
+            div(class="modal-content")
+               div(class="modal-header")
+               button(type="button" class="close" data-dismiss="modal")
+                  X
+               div(class="modal-body")
+                  p
+                     |Unsucessful
+               div(class="modal-footer")
+                  button(type="button" class="btn btn-default" data-dismiss="modal")
+                     |Close
+		 					 
+      script(src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous")
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"  crossorigin="anonymous")
+      script(src="/scripts.js")
