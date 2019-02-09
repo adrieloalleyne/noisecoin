@@ -1,0 +1,2 @@
+# noisecoin
+NoiseCoin Demo
